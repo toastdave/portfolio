@@ -11,11 +11,19 @@ import "../styles/global.css";
 		<meta name="generator" content={Astro.generator} />
 		<title>Shiny</title>
 	</head>
-	<body class="from-slate-800 bg-linear-to-br to-slate-950 text-white">
-		<header>
-			<nav class="h-10 w-full outline outline-slate-400"></nav>
+	<body class="to-slate-800 bg-linear-to-br from-slate-950 text-white min-h-screen flex flex-col">
+		<header class="flex h-10 border-b border-slate-900">
+			<div class="w-20 border-r border-slate-900">
+
+			</div>
+			<nav class="flex-1">
+
+			</nav>
 		</header>
-		<slot />
+		<div class="flex flex-1">
+			<div class="w-20 h-full border-r border-slate-900"></div>
+			<slot />
+		</div>
 	</body>
 </html>
 
