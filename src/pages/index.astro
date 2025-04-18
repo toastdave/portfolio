@@ -1,73 +1,35 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import toasty from '../assets/toasty.png';
+import tower from '../assets/tower.png';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<!-- Main Body Container -->
-	<div class="flex h-full w-full px-6 pl-6 bg-amber-800">
 
-		<!-- Internal Container -->
-		<div class="flex h-full w-full bg-slate-800 flex-col">
+	<!-- HERO -->
+	<section class=" h-96 flex flex-col gap-4">
+		<h1 class="text-7xl font-bold tracking-tighter">Howdy</h1>
+		<h2 class="text-5xl font-bold tracking-tighter">I'm David</h2>
+		<h3 class="text-4xl font-bold tracking-tighter">Thanks for checking out my stuff</h3>
+	</section>
 
-			<!-- HERO -->
-			<div class="text-7xl font-semibold h-96 bg-slate-700 w-full">
-				YAY
+	<!-- Row 1 -->
+	<section class="flex flex-col sm:flex-row gap-6 h-64 sm:h-80">
+		<a href="https://toasty-one.vercel.app/" target="_blank noreferrer noopnener" class="flex-1 rounded-xl hover:opacity-70 transition-all duration-300">
+			<Image src={toasty} alt="toasty" class="object-cover h-64 sm:h-80 rounded-xl">
+		</a>
+		<div class="flex-1 rounded-xl flex flex-col gap-2">
+			<div class="flex justify-between w-full">
+				<h1 class="text-3xl font-semibold">Toasty</h1>
+				<a href="https://github.com/toastdave/toasty" class="text-blue-500 underline text-lg" target="_blank noreferrer noopener">Github</a>
 			</div>
-
-			<!-- Portfolio Content Container -->
-			<div class="flex flex-col gap-10 bg-slate-600">
-
-				<!-- Row 1 -->
-				<div class="flex gap-6 flex-col sm:flex-row bg-slate-500">
-					
-					<!-- Project Image -->
-					<div class="w-full sm:w-1/2 h-64 bg-slate-400 rounded">
-						
-					</div>
-
-					<!-- Project Description -->
-					<div class="w-full sm:w-1/2 h-64 bg-slate-400 rounded">
-						
-					</div>
-
-				</div>
-
-				<!-- Row 2 -->
-				<div class="flex gap-6 flex-col sm:flex-row bg-slate-500">
-					
-					<!-- Project Image -->
-					<div class="w-full sm:w-1/2 h-64 bg-slate-400 rounded">
-						
-					</div>
-
-					<!-- Project Description -->
-					<div class="w-full sm:w-1/2 h-64 bg-slate-400 rounded">
-						
-					</div>
-
-				</div>
-
-				<!-- Row 3 -->
-				<div class="flex gap-6 flex-col sm:flex-row bg-slate-500">
-					
-					<!-- Project Image -->
-					<div class="w-full sm:w-1/2 h-64 bg-slate-400 rounded">
-						
-					</div>
-
-					<!-- Project Description -->
-					<div class="w-full sm:w-1/2 h-64 bg-slate-400 rounded">
-						
-					</div>
-
-				</div>
-
-			</div>
-
+			<h2>Movie and Show Rankings</h2>
+			<h3>NextJS, TailwindCSS, Vercel</h3>
 		</div>
-	</div>
+	</section>
 </Layout>
