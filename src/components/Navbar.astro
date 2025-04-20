@@ -1,0 +1,199 @@
+---
+const navItems = [
+  { name: 'Home', url: '#home' },
+  { name: 'Projects', url: '#projects' },
+  { name: 'Skills', url: '#skills' }
+];
+---
+
+<header class="navbar" id="navbar">
+  <div class="container navbar-container">
+    <div class="navbar-logo">
+    </div>
+    
+    <nav class="navbar-menu">
+      <ul class="navbar-links">
+        {navItems.map(item => (
+          <li>
+            <a href={item.url}>{item.name}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    
+    <div class="navbar-actions">
+      <button id="theme-toggle" aria-label="Toggle dark mode">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-light">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-dark">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: var(--space-3) 0;
+    transition: all var(--transition-medium);
+    background-color: transparent;
+  }
+  
+  .navbar.scrolled {
+    background-color: var(--color-bg);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(10px);
+    padding: var(--space-2) 0;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbar-logo a {
+    display: flex;
+    align-items: center;
+    color: var(--color-text);
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  
+  .logo-text {
+    background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  
+  .navbar-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: var(--space-4);
+  }
+  
+  .navbar-links a {
+    color: var(--color-text);
+    font-weight: 500;
+    position: relative;
+    transition: color var(--transition-fast);
+  }
+  
+  .navbar-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+    transition: width var(--transition-medium);
+  }
+  
+  .navbar-links a:hover {
+    color: var(--color-primary-600);
+  }
+  
+  .navbar-links a:hover::after {
+    width: 100%;
+  }
+  
+  #theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-fast);
+    position: relative;
+  }
+  
+  #theme-toggle:hover {
+    background-color: var(--color-bg-secondary);
+  }
+  
+  .icon-light, .icon-dark {
+    position: absolute;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    color: var(--color-text);
+  }
+  
+  .icon-light {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+  
+  .icon-dark {
+    opacity: 1;
+    transform: rotate(0);
+  }
+  
+  [data-theme="dark"] .icon-light {
+    opacity: 1;
+    transform: rotate(0);
+  }
+  
+  [data-theme="dark"] .icon-dark {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-links {
+      gap: var(--space-3);
+    }
+    
+    .navbar-links a {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+  
+  const navbar = document.getElementById('navbar');
+  
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  }
+</script>

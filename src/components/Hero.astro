@@ -1,0 +1,272 @@
+---
+import TerminalAnimation from './TerminalAnimation.astro';
+---
+
+<section id="home" class="hero">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="hero-intro">
+        <h1 class="hero-title">
+          <span class="greeting">Hey, I'm</span>
+          <span class="name">David</span>
+        </h1>
+        <h2 class="hero-subtitle">Software Engineer</h2>
+        <p class="hero-description">
+          I love creating and am addicted to learning
+        </p>
+        <div class="social-links">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="social-link github">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-canvas" id="hero-canvas">
+      <TerminalAnimation />
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span class="mouse">
+      <span class="mouse-wheel"></span>
+    </span>
+    <span class="scroll-text">Scroll Down</span>
+  </div>
+</section>
+
+
+
+<style>
+  .hero {
+    position: relative;
+    min-height: calc(100dvh);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 0;
+  }
+  
+  .hero-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .hero-content {
+    flex: 1;
+    padding-right: var(--space-4);
+  }
+  
+  .hero-intro {
+    max-width: 600px;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: var(--space-2);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .greeting {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-1);
+  }
+  
+  .name {
+    background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  
+  .hero-subtitle {
+    font-size: 2rem;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-secondary);
+  }
+  
+  .hero-description {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-4);
+    color: var(--color-text-secondary);
+    max-width: 540px;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-fast);
+  }
+  
+  .social-link:hover {
+    transform: translateY(-3px);
+    color: white;
+  }
+  
+  .social-link.github:hover {
+    background-color: #333;
+  }
+  
+  .social-link.linkedin:hover {
+    background-color: #0077b5;
+  }
+  
+  .social-link.twitter:hover {
+    background-color: #1da1f2;
+  }
+  
+  .hero-cta {
+    display: flex;
+    gap: var(--space-3);
+  }
+  
+  .hero-canvas {
+    flex: 1;
+    height: 600px;
+    position: relative;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(90deg, var(--color-primary-600), var(--color-primary-700));
+    color: white;
+    border: none;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: white;
+  }
+  
+  .scroll-indicator {
+    position: absolute;
+    bottom: var(--space-4);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  .mouse {
+    width: 26px;
+    height: 40px;
+    border: 2px solid var(--color-text-secondary);
+    border-radius: var(--radius-full);
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+  }
+  
+  .mouse-wheel {
+    width: 4px;
+    height: 8px;
+    background-color: var(--color-text-secondary);
+    border-radius: var(--radius-full);
+    animation: scroll 1.5s infinite;
+  }
+  
+  .scroll-text {
+    margin-top: var(--space-1);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(12px);
+      opacity: 0;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-container {
+      flex-direction: column;
+    }
+    
+    .hero-content {
+      padding-right: 0;
+    }
+    
+    .hero-canvas {
+      width: 100%;
+      height: 400px;
+      margin-top: var(--space-4);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .greeting {
+      font-size: 1.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+    }
+    
+    .hero-canvas {
+      height: 300px;
+    }
+    
+    .hero-cta {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    
+    .btn {
+      width: 100%;
+    }
+  }
+</style>

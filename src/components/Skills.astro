@@ -1,0 +1,330 @@
+---
+const skills = [
+  {
+    category: 'Frontend',
+    items: [
+      { name: 'JavaScript', level: 90 },
+      { name: 'TypeScript', level: 85 },
+      { name: 'React', level: 90 },
+      { name: 'Vue.js', level: 80 },
+      { name: 'HTML/CSS', level: 95 },
+      { name: 'Three.js', level: 75 }
+    ]
+  },
+  {
+    category: 'Backend',
+    items: [
+      { name: 'Node.js', level: 85 },
+      { name: 'Python', level: 80 },
+      { name: 'SQL', level: 75 },
+      { name: 'GraphQL', level: 70 },
+      { name: 'REST API', level: 90 },
+      { name: 'MongoDB', level: 75 }
+    ]
+  },
+  {
+    category: 'DevOps & Tools',
+    items: [
+      { name: 'Git', level: 85 },
+      { name: 'Docker', level: 75 },
+      { name: 'AWS', level: 70 },
+      { name: 'GitHub Actions', level: 65 },
+      { name: 'Figma', level: 70 },
+      { name: 'Jest', level: 80 }
+    ]
+  }
+];
+---
+
+<section id="skills" class="skills">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">My Skills</h2>
+      <p class="section-subtitle">Technologies and tools I work with</p>
+    </div>
+    
+    <div class="skills-container">
+      {skills.map(skillGroup => (
+        <div class="skill-group">
+          <h3 class="skill-category">{skillGroup.category}</h3>
+          <div class="skill-items">
+            {skillGroup.items.map(skill => (
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">{skill.name}</span>
+                  <span class="skill-level">{skill.level}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style={`width: ${skill.level}%`}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="experience-timeline">
+      <h3 class="timeline-title">Work Experience</h3>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4 class="timeline-title">Senior Software Engineer</h4>
+            <div class="timeline-info">
+              <span class="timeline-company">Tech Company Inc.</span>
+              <span class="timeline-date">2021 - Present</span>
+            </div>
+            <p class="timeline-description">
+              Led development of cloud-based applications. Architected scalable solutions and mentored junior developers.
+            </p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4 class="timeline-title">Software Engineer</h4>
+            <div class="timeline-info">
+              <span class="timeline-company">Digital Solutions Ltd.</span>
+              <span class="timeline-date">2019 - 2021</span>
+            </div>
+            <p class="timeline-description">
+              Developed frontend interfaces with React and backend APIs with Node.js. Implemented CI/CD pipelines.
+            </p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4 class="timeline-title">Junior Developer</h4>
+            <div class="timeline-info">
+              <span class="timeline-company">StartUp Co.</span>
+              <span class="timeline-date">2017 - 2019</span>
+            </div>
+            <p class="timeline-description">
+              Built responsive web applications and contributed to the company's main product features.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills {
+    padding: var(--space-7) 0;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-5);
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-2);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+    border-radius: var(--radius-full);
+  }
+  
+  .section-subtitle {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+  }
+  
+  .skill-category {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .skill-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .skill-item {
+    width: 100%;
+  }
+  
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-1);
+  }
+  
+  .skill-name {
+    font-weight: 500;
+  }
+  
+  .skill-level {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+  }
+  
+  .skill-bar {
+    height: 8px;
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+  }
+  
+  .skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+    border-radius: var(--radius-full);
+    width: 0;
+    transition: width 1.5s ease-in-out;
+  }
+  
+  .experience-timeline {
+    margin-top: var(--space-6);
+  }
+  
+  .timeline-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-4);
+    text-align: center;
+  }
+  
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-primary-600), var(--color-accent-500));
+    margin-left: 30px;
+  }
+  
+  .timeline-item {
+    display: flex;
+    margin-bottom: var(--space-4);
+    position: relative;
+  }
+  
+  .timeline-marker {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--color-primary-600);
+    border: 3px solid var(--color-bg);
+    margin-top: 5px;
+    margin-right: var(--space-3);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    margin-left: 23px;
+  }
+  
+  .timeline-content {
+    background-color: var(--color-bg);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    flex: 1;
+  }
+  
+  .timeline-content h4 {
+    margin-bottom: var(--space-1);
+    font-size: 1.1rem;
+  }
+  
+  .timeline-info {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-2);
+  }
+  
+  .timeline-description {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .skills-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .timeline::before {
+      margin-left: 20px;
+    }
+    
+    .timeline-marker {
+      width: 12px;
+      height: 12px;
+      margin-left: 17px;
+    }
+    
+    .timeline-info {
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate skill bars when they come into view
+    const skillBars = document.querySelectorAll('.skill-progress');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.parentElement.dataset.width;
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    skillBars.forEach(bar => {
+      // Store the original width
+      bar.parentElement.dataset.width = bar.style.width;
+      // Reset width to 0 initially
+      bar.style.width = '0';
+      // Observe the element
+      observer.observe(bar);
+    });
+  });
+</script>

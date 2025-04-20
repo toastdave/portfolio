@@ -1,50 +1,54 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import toasty from '../assets/toasty.png';
-import tower from '../assets/tower.png';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-
-	<!-- HERO -->
-	<section class="min-h-dvh flex flex-col gap-4">
-		<h1 class="text-7xl font-bold tracking-tighter">Howdy</h1>
-		<h2 class="text-5xl font-bold tracking-tighter">I'm David</h2>
-		<h3 class="text-4xl font-bold tracking-tighter">Thanks for checking out my stuff</h3>
-	</section>
-
-	<!-- Row 1 -->
-	<section class="flex flex-col sm:flex-row gap-6 min-h-64 sm:min-h-80">
-		<a href="https://toasty-one.vercel.app/" target="_blank noreferrer noopnener" class="flex-1 rounded-xl hover:opacity-70 transition-all duration-300">
-			<Image src={toasty} alt="toasty" class="object-cover h-64 sm:h-80 rounded-xl">
-		</a>
-		<div class="flex-1 rounded-xl flex flex-col gap-2">
-			<div class="flex justify-between w-full">
-				<h1 class="text-3xl font-semibold">Toasty</h1>
-				<a href="https://github.com/toastdave/toasty" class="text-blue-500 underline text-lg" target="_blank noreferrer noopener">Github</a>
-			</div>
-			<h2>Movie and Show Rankings</h2>
-			<h3>NextJS, TailwindCSS, Vercel</h3>
-		</div>
-	</section>
-	
-	<!-- Row 1 -->
-	<section class="flex flex-col sm:flex-row gap-6 min-h-64 sm:min-h-80">
-		<a href="https://toasty-one.vercel.app/" target="_blank noreferrer noopnener" class="flex-1 rounded-xl hover:opacity-70 transition-all duration-300">
-			<Image src={tower} alt="toasty" class="object-cover h-64 sm:h-80 rounded-xl">
-		</a>
-		<div class="flex-1 rounded-xl flex flex-col gap-2">
-			<div class="flex justify-between w-full">
-				<h1 class="text-3xl font-semibold">Toasty</h1>
-				<a href="https://github.com/toastdave/toasty" class="text-blue-500 underline text-lg" target="_blank noreferrer noopener">Github</a>
-			</div>
-			<h2>Movie and Show Rankings</h2>
-			<h3>NextJS, TailwindCSS, Vercel</h3>
-		</div>
-	</section>
+<Layout title="Software Engineer Portfolio">
+  <Navbar />
+  <Hero />
+  <Projects />
+  <Skills />
+  <Footer />
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      section.classList.add('reveal');
+      observer.observe(section);
+    });
+  });
+</script>
+
+<style>
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

@@ -1,0 +1,277 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<div class={`terminal-animation ${className}`}>
+  <div class="terminal">
+    <div class="terminal-header">
+      <div class="controls">
+        <div class="control close"></div>
+        <div class="control minimize"></div>
+        <div class="control maximize"></div>
+      </div>
+      <div class="title">david@portfolio ~ </div>
+    </div>
+    <div class="terminal-body">
+      <div class="line">
+        <span class="prompt">david@portfolio:~$</span>
+        <span class="command typing-1"> cd projects</span>
+      </div>
+      <div class="line">
+        <span class="prompt">david@portfolio:~/projects$</span>
+        <span class="command typing-2"> ls -la</span>
+      </div>
+      <div class="line output">
+        <span>total 42</span>
+      </div>
+      <div class="line output">
+        <span class="dir">drwxr-xr-x</span>
+        <span class="details">dev</span>
+        <span class="file-name">portfolio-site</span>
+        <span class="date">Jun 15 2023</span>
+      </div>
+      <div class="line output">
+        <span class="dir">drwxr-xr-x</span>
+        <span class="details">dev</span>
+        <span class="file-name">vite-app</span>
+        <span class="date">Aug 22 2023</span>
+      </div>
+      <div class="line output">
+        <span class="dir">drwxr-xr-x</span>
+        <span class="details">dev</span>
+        <span class="file-name">hono-api</span>
+        <span class="date">Oct 10 2023</span>
+      </div>
+      <div class="line">
+        <span class="prompt">david@portfolio:~/projects$</span>
+        <span class="command typing-3"> cat skills.json</span>
+      </div>
+      <div class="line output json">
+        <span>{</span>
+      </div>
+      <div class="line output json indent">
+        <span>"frontend": ["React", "Next.js", "JavaScript", "TypeScript", "HTML/CSS"],</span>
+      </div>
+      <div class="line output json indent">
+        <span>"backend": ["Node.js", "C#", "Python", "SQL"],</span>
+      </div>
+      <div class="line output json indent">
+        <span>"tools": ["Git", "Docker", "Azure", "CI/CD", "Figma"]</span>
+      </div>
+      <div class="line output json">
+        <span>}</span>
+      </div>
+      <div class="line">
+        <span class="prompt">david@portfolio:~/projects$</span>
+        <span class="command typing-4"> echo "Let's build something amazing!"</span>
+      </div>
+      <div class="line output">
+        <span class="message">Let's build something amazing!</span>
+      </div>
+      <div class="line">
+        <span class="prompt">david@portfolio:~/projects$</span>
+        <span class="cursor"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .terminal-animation {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .terminal {
+    width: 100%;
+    max-width: 600px;
+    background-color: #1e1e2e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transform: perspective(800px) rotateX(5deg);
+    transition: transform 0.3s ease;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .terminal:hover {
+    transform: perspective(800px) rotateX(0);
+  }
+  
+  .terminal-header {
+    background-color: #2b2b3a;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 8px;
+    margin-right: 15px;
+  }
+  
+  .control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  .close { background-color: #ff5f56; }
+  .minimize { background-color: #ffbd2e; }
+  .maximize { background-color: #27c93f; }
+  
+  .title {
+    color: #cdd6f4;
+    font-size: 14px;
+    font-family: monospace;
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .terminal-body {
+    padding: 15px;
+    height: auto;
+    max-height: 350px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cdd6f4;
+    overflow: hidden;
+  }
+  
+  .line {
+    margin-bottom: 6px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+  
+  .prompt {
+    color: #a6e3a1;
+    margin-right: 5px;
+  }
+  
+  .command {
+    color: #cdd6f4;
+  }
+  
+  .output {
+    color: #bac2de;
+    padding-left: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .dir {
+    color: #89b4fa;
+    width: 100px;
+  }
+  
+  .details {
+    color: #bac2de;
+    width: 100px;
+  }
+  
+  .file-name {
+    color: #f5c2e7;
+    width: 150px;
+  }
+  
+  .date {
+    color: #bac2de;
+  }
+  
+  .json {
+    color: #f9e2af;
+  }
+  
+  .indent {
+    padding-left: 20px;
+  }
+  
+  .message {
+    color: #f38ba8;
+  }
+  
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: #cdd6f4;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+  }
+  
+  .typing-1 {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 1s steps(11) 0.5s forwards;
+    width: 0;
+  }
+  
+  .typing-2 {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 1s steps(6) 2s forwards;
+    width: 0;
+  }
+  
+  .typing-3 {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 1.2s steps(15) 5s forwards;
+    width: 0;
+  }
+  
+  .typing-4 {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 1.5s steps(34) 9s forwards;
+    width: 0;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: perspective(800px) rotateX(5deg) translateY(0); }
+    50% { transform: perspective(800px) rotateX(5deg) translateY(-10px); }
+  }
+  
+  @media (max-width: 768px) {
+    .terminal {
+      max-width: 100%;
+      transform: none;
+      animation: float-mobile 6s ease-in-out infinite;
+    }
+    
+    .terminal-body {
+      max-height: 300px;
+    }
+    
+    @keyframes float-mobile {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .dir, .details, .file-name {
+      width: auto;
+    }
+  }
+</style> 

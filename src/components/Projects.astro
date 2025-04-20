@@ -1,0 +1,89 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { projects } from '../data/projects';
+---
+
+<section id="projects" class="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">My Projects</h2>
+      <p class="section-subtitle">Check out some of my recent work</p>
+    </div>
+    
+    <div class="projects-grid">
+      {projects.map((project, index) => (
+        <div class="project-item">
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            tags={project.tags}
+            githubUrl={project.githubUrl}
+            liveUrl={project.liveUrl}
+            featured={index === 0 || index === 3}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    background-color: var(--color-bg-secondary);
+    padding: var(--space-7) 0;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-5);
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-2);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+    border-radius: var(--radius-full);
+  }
+  
+  .section-subtitle {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-4);
+  }
+  
+  @media (min-width: 992px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+</style>
