@@ -1,5 +1,6 @@
 import toasty from "../assets/toasty.png";
 import tower from "../assets/tower.png";
+import elm from "../assets/elm.png";
 
 export interface Project {
   title: string;
@@ -29,9 +30,9 @@ export const projects: Project[] = [
   {
     title: "ELM",
     description: "A Next.js application for career reviews and entry level job listings",
-    image: "https://via.placeholder.com/600x400",
+    image: elm.src,
     tags: ["Next.js", "React", "Tailwind CSS", "Supabase"],
     githubUrl: "https://github.com/toastdave/elm",
-    liveUrl: "https://toasty-one.vercel.app/"
+    liveUrl: "https://elm-mu.vercel.app/"
   },
 ];
