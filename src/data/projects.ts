@@ -1,4 +1,5 @@
 import toasty from "../assets/toasty.png";
+import tower from "../assets/tower.png";
 
 export interface Project {
   title: string;
@@ -12,25 +13,25 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Toasty",
-    description: "A fNext.js application for finding trending movies and TV shows",
+    description: "A Next.js application for finding trending movies and TV shows",
     image: toasty.src,
     tags: ["React", "Next.js", "Tailwind CSS", "TMDB"],
-    githubUrl: "https://github.com/",
-    liveUrl: "https://example.com"
+    githubUrl: "https://github.com/toastdave/toasty",
+    liveUrl: "https://toasty-one.vercel.app/"
   },
   {
-    title: "3D Portfolio Visualizer",
-    description: "Interactive 3D visualization tool for displaying portfolio projects using Three.js and React Three Fiber.",
-    image: "https://via.placeholder.com/600x400",
-    tags: ["Three.js", "React", "GLSL", "TypeScript"],
-    githubUrl: "https://github.com/",
-    liveUrl: "https://example.com"
+    title: "Tower",
+    description: "A cli tool for creating any project",
+    image: tower.src,
+    tags: ["TypeScript", "Clack", "Commander"],
+    githubUrl: "https://github.com/toastdave/tower",
   },
   {
-    title: "Real-time Chat Application",
-    description: "Real-time messaging application with socket connections, user presence, and message history.",
+    title: "ELM",
+    description: "A Next.js application for career reviews and entry level job listings",
     image: "https://via.placeholder.com/600x400",
-    tags: ["Socket.io", "React", "Express", "Redis"],
-    githubUrl: "https://github.com/"
+    tags: ["Next.js", "React", "Tailwind CSS", "Supabase"],
+    githubUrl: "https://github.com/toastdave/elm",
+    liveUrl: "https://toasty-one.vercel.app/"
   },
 ];
